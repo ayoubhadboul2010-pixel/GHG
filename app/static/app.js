@@ -68,5 +68,5 @@ async function payVerify(){
   toast("تم إرسال الدفع. جارٍ التحقق...");
   setTimeout(async()=>{try{const d=await api("/api/verify-ton","POST");toast(d.message);await refresh()}catch(e){toast(e.message)}},12000);
  }catch(e){toast(e.message||"لم تكتمل عملية الدفع")}
-}
+}Object.assign(window, { showTab, claim, upgrade, completeTask, copyRef, payVerify });
 refresh();
