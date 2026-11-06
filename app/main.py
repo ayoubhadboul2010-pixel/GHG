@@ -69,7 +69,7 @@ def claim(authorization: str | None = Header(default=None), db: Session = Depend
     while user.xp >= user.level * 100:
     user.xp -= user.level * 100
     user.level += 1
-    db.commit()
+db.commit()
     return {"claimed": round(amount, 6), "user": serialize(user)}
 
 @app.post("/api/upgrade")
