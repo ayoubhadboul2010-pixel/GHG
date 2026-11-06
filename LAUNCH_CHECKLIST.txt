@@ -1,0 +1,13 @@
+GHG EMPIRE LAUNCH CHECKLIST
+[ ] Create Telegram bot with BotFather
+[ ] Set BOT_TOKEN and BOT_USERNAME in .env
+[ ] Deploy app to a public HTTPS domain
+[ ] Set WEBAPP_URL
+[ ] Configure Mini App launch button in BotFather
+[ ] Set ADMIN_IDS to your Telegram numeric ID
+[ ] Set TON Center API key and verify receiving address
+[ ] Replace domain in tonconnect-manifest.json
+[ ] Test Telegram initData validation
+[ ] Test mining, claim, upgrade and database persistence
+[ ] Test TON payment on testnet before mainnet
+[ ] Add privacy policy, terms, rate limits, backups and monitoring
