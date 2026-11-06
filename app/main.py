@@ -67,7 +67,8 @@ def claim(authorization: str | None = Header(default=None), db: Session = Depend
         raise HTTPException(400, "لا توجد أرباح كافية للجمع بعد")
     user.balance += amount; user.pending = 0; user.xp += int(amount * 10)
     while user.xp >= user.level * 100:
-        user.xp -= user.level * 100; user.level += 1; user.rate = round(user.rate * 1.12, 6)
+    user.xp -= user.level * 100
+    user.level += 1
     db.commit()
     return {"claimed": round(amount, 6), "user": serialize(user)}
 
