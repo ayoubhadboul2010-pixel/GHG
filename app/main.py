@@ -110,7 +110,7 @@ def complete_task(task_key: str, authorization: str | None = Header(default=None
     db.add(TaskCompletion(user_id=user.telegram_id, task_key=task_key)); db.commit()
     return {"reward": rewards[task_key], "user": serialize(user)}
 
-@app.get("/api/admin/stats")
+
 def require_admin(authorization: str | None):
     if not authorization or not authorization.startswith("tma "):
         raise HTTPException(401, "Open admin from Telegram")
