@@ -61,24 +61,38 @@ def me(authorization: str | None = Header(default=None), db: Session = Depends(g
 
 @app.post("/api/claim")
 def claim(authorization: str | None = Header(default=None), db: Session = Depends(get_db)):
-    user = get_user(authorization, db); accrue(user)
+    user = get_user(authorization, db)
+    accrue(user)
     amount = user.pending
+
     if amount < 0.001:
         raise HTTPException(400, "لا توجد أرباح كافية للجمع بعد")
-    user.balance += amount; user.pending = 0; user.xp += int(amount * 10)
+
+    user.balance += amount
+    user.pending = 0
+    user.xp += int(amount * 10)
+
     while user.xp >= user.level * 100:
-    user.xp -= user.level * 100
-    user.level += 1
-db.commit()
+        user.xp -= user.level * 100
+        user.level += 1
+
+    db.commit()
     return {"claimed": round(amount, 6), "user": serialize(user)}
+
 
 @app.post("/api/upgrade")
 def upgrade(authorization: str | None = Header(default=None), db: Session = Depends(get_db)):
-    user = get_user(authorization, db); accrue(user)
+    user = get_user(authorization, db)
+    accrue(user)
+
     cost = round(25 * (1.65 ** (user.level - 1)), 4)
     if user.balance < cost:
         raise HTTPException(400, f"تحتاج {cost} GHG للترقية")
-    user.balance -= cost; user.rate = round(user.rate * 1.25, 6); user.level += 1
+
+    user.balance -= cost
+    user.rate = round(user.rate * 1.25, 6)
+    user.level += 1
+
     db.commit()
     return {"cost": cost, "user": serialize(user)}
 
