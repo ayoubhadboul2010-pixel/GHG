@@ -68,7 +68,7 @@ function commentPayload(comment){
 }
 async function ensureTon(){
  if(!window.TON_CONNECT_UI)throw new Error("تعذر تحميل TON Connect");
- if(!tonUI)tonUI=new TON_CONNECT_UI.TonConnectUI({manifestUrl:location.origin+"/tonconnect-manifest.json"});
+ if(!tonUI)tonUI=new TON_CONNECT_UI.TonConnectUI({manifestUrl:location.origin+"/static/tonconnect-manifest.json"});
  if(!tonUI.connected)await tonUI.openModal();
  if(!tonUI.connected)throw new Error("لم يتم ربط المحفظة");
  return tonUI;
@@ -82,7 +82,7 @@ async function payVerify(){
  if(!window.TON_CONNECT_UI){toast("تعذر تحميل TON Connect؛ أعد المحاولة");return}
  try{
   if(!tonUI){
-   tonUI=new TON_CONNECT_UI.TonConnectUI({manifestUrl:location.origin+"/tonconnect-manifest.json"});
+  tonUI=new TON_CONNECT_UI.TonConnectUI({manifestUrl:location.origin+"/static/tonconnect-manifest.json"});
    await tonUI.openModal();
   } else if(!tonUI.connected) await tonUI.openModal();
   if(!tonUI.connected){toast("اربط محفظة TON أولًا");return}
