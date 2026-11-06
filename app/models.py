@@ -16,7 +16,7 @@ class User(Base):
     pending: Mapped[float] = mapped_column(Float, default=0.0)
     level: Mapped[int] = mapped_column(Integer, default=1)
     xp: Mapped[int] = mapped_column(Integer, default=0)
-    rate: Mapped[float] = mapped_column(Float, default=0.05)
+    rate: Mapped[float] = mapped_column(Float, default=0.01)
     last_tick: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     verified: Mapped[bool] = mapped_column(Boolean, default=False)
     referrer_id: Mapped[int | None] = mapped_column(BigInteger, nullable=True)
