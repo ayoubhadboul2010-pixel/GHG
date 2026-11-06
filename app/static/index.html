@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#080d0b"><title>GHG Empire</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+<header class="top panel">
+  <div class="brand"><div class="coin-logo">♛<b>GHG</b><small>Level 1</small></div><div><h1>GHG Empire</h1><div class="level-line"><span>Level <b id="levelTop">1</b></span><div class="progress"><i id="xpBar"></i></div><small id="xpText">0 / 100</small></div></div></div>
+  <div class="top-stats"><div class="pill">🪙 <b id="topBalance">0.00</b></div><div class="pill green">⚡ <b id="topRate">12.0/d</b></div></div>
+  <button class="plus" onclick="showTab('upgrade')">＋</button>
+</header>
+<main>
+<section id="mining" class="tab active">
+ <div class="mine panel">
+  <div class="mine-title"><span>⛏ الصفحة الرئيسية (Mining)</span><span class="mine-tag">🟢 منجم GHG</span></div>
+  <div class="hero"><div class="rate-badge">⚡ <b id="heroRate">0.05 GHG/s</b></div></div>
+  <div class="stats">
+   <div><span>🪙 رصيدك</span><strong id="balance">0.000 GHG</strong></div>
+   <div><span>▥ مستوى اللاعب</span><strong id="level">1</strong></div>
+   <div><span>👛 سرعة التعدين</span><strong id="rate">0.05 GHG/s</strong></div>
+  </div>
+  <div class="pending">الأرباح غير المجموعة: <b id="pending">0.000000 GHG</b></div>
+  <button class="claim" id="claimBtn" onclick="claim()">⛏ جمع الأرباح Claim</button>
+ </div>
+ <section class="verify panel">
+  <div class="verify-art">🛡️<div>💎</div>🪙</div>
+  <div class="verify-content"><h2>🔷 توثيق الحساب</h2><p>قم بتوثيق حسابك عبر دفع <b>0.05 TON</b><br>للحصول على مزايا إضافية.</p><div class="ton-price">💎 0.05 TON</div><button class="action" id="verifyBtn" onclick="payVerify()">توثيق الحساب الآن 🔐</button><div id="tonStatus" class="hint">التوثيق متاح بعد إعداد TON Connect على النطاق المنشور.</div></div>
+ </section>
+</section>
+<section id="upgrade" class="tab panel subpage"><h2>⏫ الترقية</h2><p>طوّر معداتك لزيادة سرعة التعدين.</p><div class="upgrade-card"><div class="big-icon">⚒️</div><h3>ترقية المنجم</h3><p>ترقية المستوى تزيد سرعة التعدين بنسبة 25%.</p><button class="action" onclick="upgrade()">ترقية الآن</button><small id="upgradeInfo"></small></div></section>
+<section id="tasks" class="tab panel subpage"><h2>🎁 المهام</h2><p>أكمل المهام لتحصل على مكافآت GHG.</p><div class="task-row"><span>زيارة المنجم يوميًا</span><button onclick="completeTask('daily_visit')">+1 GHG</button></div></section>
+<section id="friends" class="tab panel subpage"><h2>👥 الأصدقاء</h2><p>شارك رابطك لدعوة الأصدقاء إلى المنجم.</p><div class="ref-box" id="refLink">افتح اللعبة من Telegram لإنشاء رابط الدعوة.</div><button class="action" onclick="copyRef()">نسخ رابط الدعوة</button><p>عدد الأصدقاء: <b id="friendsCount">0</b></p></section>
+<section id="profile" class="tab panel subpage"><h2>👤 الملف الشخصي</h2><p id="profileName">لاعب GHG</p><p>رقم Telegram: <b id="profileId">—</b></p><p>حالة التوثيق: <b id="verified">غير موثق</b></p></section>
+</main>
+<nav class="bottom panel">
+ <button class="nav-btn selected" data-tab="mining" onclick="showTab('mining')"><span>⛏</span>التعدين</button>
+ <button class="nav-btn" data-tab="upgrade" onclick="showTab('upgrade')"><span>⏫</span>الترقية</button>
+ <button class="nav-btn" data-tab="tasks" onclick="showTab('tasks')"><span>🎁</span>المهام</button>
+ <button class="nav-btn" data-tab="friends" onclick="showTab('friends')"><span>👥</span>الأصدقاء</button>
+ <button class="nav-btn" data-tab="profile" onclick="showTab('profile')"><span>👤</span>الملف الشخصي</button>
+</nav>
+<div id="toast" class="toast"></div>
+</div>
+<script type="module" src="/static/app.js"></script>
+</body></html>
