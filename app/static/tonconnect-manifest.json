@@ -1,4 +1,4 @@
-{
+import { beginCell } from "https://esm.sh/@ton/core@0.59.1";{
   "url": "https://ghg-9la3.onrender.com",
   "name": "GHG Empire",
   "iconUrl": "https://ghg-9la3.onrender.com/static/assets/mine-hero.jpg"
